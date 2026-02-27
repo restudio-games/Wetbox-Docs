@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wetbox Docs · enlarged logo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/Rh3BTjRM/cube.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+
+    /* ===== الهيدر البسيط ===== */
+    .top-bar {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 16px 40px;
+      background: white;
+    }
+
+    .logo img {
+      /* تم تكبير الشعار بشكل واضح */
+      height: 72px;       /* كانت 48px → أصبح 72px (تكبير 50%) */
+      width: auto;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    /* لمسة بسيطة: تكبير خفيف عند التمرير (اختياري) */
+    .logo img:hover {
+      transform: scale(1.02);
+    }
+
+    /* ===== الحاوية الرئيسية ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 40px;
+    }
+
+    /* ===== قسم Mixamo ===== */
+    .section {
+      margin-bottom: 56px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      color: #111;
+    }
+
+    .mixamo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .mixamo-card {
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .mixamo-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    .card-content p {
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .card-link {
+      color: #0066cc;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== صندوق المساعدة البسيط ===== */
+    .help-section {
+      border-top: 1px solid #eaeaea;
+      padding-top: 32px;
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .help-item h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .help-item p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .help-item a {
+      color: #0066cc;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .help-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Banner Section ===== */
+    .banner-section {
+      margin-bottom: 48px;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .banner-image {
+      width: 100%;
+      display: block;
+    }
+
+    .banner-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .banner-content {
+      padding: 32px;
+      border-top: 1px solid #eaeaea;
+    }
+
+    .banner-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #111;
+    }
+
+    .engine-list {
+      list-style: none;
+    }
+
+    .engine-list li {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .engine-list li:last-child {
+      border-bottom: none;
+    }
+
+    .engine-name {
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    .engine-desc {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* ===== الأقسام التقنية ===== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .tech-card {
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      padding: 24px;
+      background: white;
+    }
+
+    .tech-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .compat-list {
+      list-style: none;
+    }
+
+    .compat-list li {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .note {
+      background: #f8f9fa;
+      border-left: 3px solid #666;
+      padding: 16px;
+      font-size: 14px;
+      color: #444;
+      margin-top: 20px;
+    }
+
+    /* ===== الجداول ===== */
+    .table-wrapper {
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #111;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #eaeaea;
+      color: #444;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    td a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+
+    .platform-badge {
+      display: inline-block;
+      background: #f0f0f0;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* ===== الفوتر البسيط ===== */
+    footer {
+      border-top: 1px solid #eaeaea;
+      background: white;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 40px;
+      width: auto;
+      opacity: 0.8;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-social a {
+      color: #666;
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: #111;
+    }
+
+    .copyright {
+      color: #888;
+      font-size: 13px;
+    }
+
+    /* ===== تصدير للشاشات الصغيرة ===== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 32px 20px;
+      }
+      
+      .mixamo-grid,
+      .tech-grid,
+      .help-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      /* تصغير طفيف للشعار على الموبايل حتى لا يأخذ مساحة كبيرة */
+      .logo img {
+        height: 60px;   /* لا يزال أكبر من 48px الأصلية */
+      }
+    }
+
+    /* شاشات صغيرة جداً */
+    @media (max-width: 480px) {
+      .logo img {
+        height: 52px;   /* لا يزال مكبراً لكن متناسب */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الهيدر بشعار مكبر (الطلب) -->
+  <div class="top-bar">
+    <div class="logo">
+      <img src="https://i.postimg.cc/Rh3BTjRM/cube.png" alt="Wetbox">
+    </div>
+  </div>
+
+  <main class="container">
+    
+    <!-- Mixamo Section -->
+    <div class="section">
+      <h2 class="section-title">Mixamo</h2>
+      
+      <div class="mixamo-grid">
+        <div class="mixamo-card">
+          <img src="https://i.postimg.cc/638jHqPh/panel1.jpg" alt="Ready to Use Characters">
+          <div class="card-content">
+            <h3>Ready to Use Characters</h3>
+            <p>Browse a collection of high-quality 3D characters. From realistic to cartoon, fantasy to sci-fi, there's a character for every purpose. Each character comes fully textured and rigged so you can use immediately in your creative projects.</p>
+            <a href="https://www.mixamo.com/#/?page=1&type=Character" class="card-link" target="_blank">Browse characters →</a>
+          </div>
+        </div>
+        
+        <div class="mixamo-card">
+          <img src="https://i.postimg.cc/0yt0Lx7x/panel2.jpg" alt="Automatic Character Rigging">
+          <div class="card-content">
+            <h3>Automatic Character Rigging</h3>
+            <p>Upload your custom character to Mixamo and get an automatically rigged full human skeleton, custom fit to your model and ready to animate. Customize your rigging options with optimizations for mobile performance.</p>
+            <a href="https://www.mixamo.com/#/" class="card-link" target="_blank">Upload character →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Help links -->
+      <div class="help-section">
+        <div class="help-grid">
+          <div class="help-item">
+            <h4>Documentation</h4>
+            <p>Adobe's official Mixamo guide</p>
+            <a href="https://helpx.adobe.com/creative-cloud/help/mixamo-rigging-animation.html" target="_blank">View docs →</a>
+          </div>
+          <div class="help-item">
+            <h4>Tutorials</h4>
+            <p>Video guides on YouTube</p>
+            <a href="https://www.youtube.com/results?search_query=mixamo+tutorial" target="_blank">Watch →</a>
+          </div>
+          <div class="help-item">
+            <h4>FAQ</h4>
+            <p>Common questions and answers</p>
+            <a href="https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html" target="_blank">Read →</a>
+          </div>
+          <div class="help-item">
+            <h4>Export Guide</h4>
+            <p>Using Mixamo with Wetbox</p>
+            <a href="#">Learn more →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner-section">
+      <div class="banner-image">
+        <img src="https://i.postimg.cc/DzX4BKgH/Unity-vs-Unreal-Engine-vs.avif" alt="Unity vs Unreal Engine vs Wetbox">
+      </div>
+      <div class="banner-content">
+        <h3>Can you use Mixamo with engines other than Wetbox?</h3>
+        <ul class="engine-list">
+          <li>
+            <div class="engine-name">Unity</div>
+            <div class="engine-desc">Full support through Asset Store integrations and custom importers. Mixamo characters work seamlessly with Unity's Mecanim animation system.</div>
+          </li>
+          <li>
+            <div class="engine-name">Unreal Engine</div>
+            <div class="engine-desc">Native support via FBX import. Unreal's retargeting system allows Mixamo animations to work with any humanoid skeleton.</div>
+          </li>
+          <li>
+            <div class="engine-name">Godot</div>
+            <div class="engine-desc">Compatible through FBX and glTF formats. Community tools available for easier Mixamo integration.</div>
+          </li>
+          <li>
+            <div class="engine-name">Blender (UPBGE)</div>
+            <div class="engine-desc">Direct download support. Use Mixamo characters for animation, rendering, or export to any game engine.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- System Requirements -->
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>System</h3>
+        <ul class="compat-list">
+          <li>Windows 10/11</li>
+          <li>macOS 11+ (Intel & Apple Silicon)</li>
+          <li>Linux (Ubuntu 20.04+, Fedora)</li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <h3>Quick Start</h3>
+        <ul class="compat-list">
+          <li>1. Install VS Code</li>
+          <li>2. Download Wetbox extension</li>
+          <li>3. Choose libraries</li>
+          <li>4. Start coding</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Graphics Libraries -->
+    <div class="section">
+      <h2 class="section-title">Graphics</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Library</th>
+              <th>Platform</th>
+              <th>Description</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PixiJS</td>
+              <td><span class="platform-badge">Web</span></td>
+              <td>2D graphics engine</td>
+              <td><a href="https://pixijs.com">pixijs.com</a></td>
+            </tr>
+            <tr>
+              <td>WGPU</td>
+              <td><span class="platform-badge">Desktop</span></td>
+              <td>Modern graphics API</td>
+              <td><a href="https://wgpu.rs">wgpu.rs</a></td>
+            </tr>
+            <tr>
+              <td>Vulkan</td>
+              <td><span class="platform-badge">Desktop</span></td>
+              <td>Low-level 3D API</td>
+              <td><a href="https://vulkan.org">vulkan.org</a></td>
+            </tr>
+            <tr>
+              <td>SFML</td>
+              <td><span class="platform-badge">Desktop</span></td>
+              <td>2D library with audio/input</td>
+              <td><a href="https://www.sfml-dev.org">sfml-dev.org</a></td>
+            </tr>
+            <tr>
+              <td>SDL</td>
+              <td><span class="platform-badge">Desktop</span></td>
+              <td>Low-level access library</td>
+              <td><a href="https://www.libsdl.org">libsdl.org</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Physics -->
+    <div class="section">
+      <h2 class="section-title">Physics</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Engine</th>
+              <th>Platform</th>
+              <th>Description</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bullet Physics</td>
+              <td><span class="platform-badge">Desktop</span></td>
+              <td>3D physics</td>
+              <td><a href="https://github.com/bulletphysics/bullet3">GitHub</a></td>
+            </tr>
+            <tr>
+              <td>Box2D</td>
+              <td><span class="platform-badge">Desktop</span></td>
+              <td>2D physics</td>
+              <td><a href="https://box2d.org">box2d.org</a></td>
+            </tr>
+            <tr>
+              <td>Planck.js</td>
+              <td><span class="platform-badge">Web</span></td>
+              <td>Box2D for web</td>
+              <td><a href="https://piqnt.com/planck.js/">planck.js</a></td>
+            </tr>
+            <tr>
+              <td>Havok</td>
+              <td><span class="platform-badge">Web</span></td>
+              <td>Babylon.js plugin</td>
+              <td><a href="https://doc.babylonjs.com/features/featuresDeepDive/physics/havokPlugin">Docs</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VR/AR -->
+    <div class="section">
+      <h2 class="section-title">VR & AR</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Platform</th>
+              <th>Description</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Babylon.js</td>
+              <td><span class="platform-badge">Web</span></td>
+              <td>3D web engine</td>
+              <td><a href="https://babylonjs.com">babylonjs.com</a></td>
+            </tr>
+            <tr>
+              <td>React</td>
+              <td><span class="platform-badge">Web</span></td>
+              <td>UI framework</td>
+              <td><a href="https://react.dev">react.dev</a></td>
+            </tr>
+            <tr>
+              <td>WebXR</td>
+              <td><span class="platform-badge">Web</span></td>
+              <td>VR/AR web API</td>
+              <td><a href="https://immersive-web.github.io/webxr/">Docs</a></td>
+            </tr>
+            <tr>
+              <td>OpenXR</td>
+              <td><span class="platform-badge">Desktop</span></td>
+              <td>Cross-platform VR/AR</td>
+              <td><a href="https://www.khronos.org/openxr/">OpenXR</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Note -->
+    <div class="note">
+      <strong>Note:</strong> Wetbox requires VS Code. Libraries must be installed and configured manually. No built-in libraries - full control.
+    </div>
+  </main>
+
+  <!-- Footer بسيط -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="https://i.postimg.cc/dtwXFsZk/swrh-restudio-nskht-2.png" alt="Restudio">
+      </div>
+      <div class="copyright">
+        <span>© 2026 Restudio Games</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://github.com/restudio-games" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.tiktok.com/@restudiogames" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/restudio_games/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/RESTUDIO_GAMES" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://restudio-games.itch.io/" target="_blank"><i class="fa-brands fa-itch-io"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
